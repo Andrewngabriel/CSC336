@@ -49,9 +49,12 @@ include("includes/header.html");
                         <th>Phone Number</th>
                     </tr>
                     <?php
-                        $sql = "SELECT * FROM Instructors";
-                        $result = $conn->query($sql);
-                        getAllInstructors($result);
+                    
+                    $sql = "SELECT Instructors.*, Departments.name AS deptName
+                    FROM Instructors
+                    JOIN Departments ON Instructors.department = Departments.departmentID";
+                    $result = $conn->query($sql);
+                    getAllInstructors($result);
                     ?>
                 </table>
             </div>
